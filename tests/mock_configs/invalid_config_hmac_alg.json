@@ -1,0 +1,7 @@
+{
+  "hmac_alg": "SHA512",
+  "secret": "mmQtdzoEswcxqY89tA/6WdfIxVrAohz7IF+8A3uARxk=",
+  "log_level": "DEBUG",
+  "listen": "0.0.0.0:8080",
+  "max_msg_size_bytes": "sdfwdfw"
+}

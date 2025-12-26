@@ -2,7 +2,11 @@
 
 from fastapi import FastAPI
 
-from src.router import router
+from .api.v1.router import router
 
-app = FastAPI()
-app.include_router(router)
+app = FastAPI(
+    title="HMAC-Python",
+    docs_url="/api/openapi",
+    openapi_url="/api/openapi.json",
+)
+app.include_router(router, prefix="/api/v1")

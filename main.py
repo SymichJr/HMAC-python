@@ -2,10 +2,12 @@
 
 import uvicorn
 
-from src.app import app 
-
+from src.app import app
+from src.core.config import get_config
 
 if __name__ == '__main__':
-    host = '' # TODO: хост должен получаться из config.json
-    port = 1  # TODO: порт должен получаться из config.json
+    cfg = get_config()
+    listen = cfg.listen.split(":")
+    host = listen[0]
+    port = listen[1]
     uvicorn.run(app, host=host, port=int(port))
