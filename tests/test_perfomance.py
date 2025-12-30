@@ -1,7 +1,9 @@
 import time
-from http import HTTPStatus
 from concurrent.futures import ThreadPoolExecutor
+from http import HTTPStatus
+
 from fastapi.testclient import TestClient
+
 from src.app import app
 
 client = TestClient(app)

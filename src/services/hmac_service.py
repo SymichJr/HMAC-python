@@ -1,7 +1,7 @@
 """Module with HMAC sign functions"""
 
-import hmac
 import hashlib
+import hmac
 
 from src.core.config import _config_instance
 from src.core.log import log_hmac_operation

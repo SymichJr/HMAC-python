@@ -1,5 +1,6 @@
-from fastapi import HTTPException, Header, status
 from typing import Annotated, Optional
+
+from fastapi import Header, HTTPException, status
 
 
 async def validate_content_type(

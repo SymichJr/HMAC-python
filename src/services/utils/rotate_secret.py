@@ -1,8 +1,11 @@
-import os
+import base64
 import json
+import logging
+import os
 import secrets
 import sys
-import base64
+
+logger = logging.getLogger("rotate_secret")
 
 CONFIG_FILE = "config.json"
 
@@ -37,7 +40,7 @@ def rotate_secret(config_path: str = CONFIG_FILE, key_length: int = 32):
             json.dump(config_data, f, indent=2)
 
         if sys.platform == "win32":
-            print(
+            logger.error(
                 "Настройте права доступа к файлу "
                 "конфига в ручную на системе win32"
             )

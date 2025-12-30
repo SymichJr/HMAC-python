@@ -1,10 +1,12 @@
 """Module with config utils"""
 
+import base64
 import json
 import os
-import base64
 import threading
 from typing import NamedTuple
+
+from src.core.constants import MAX_SECRET_LEN, MIN_SECRET_LEN
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -44,8 +46,14 @@ def load_config(path: str = "config.json") -> Config:
             f"Ошибка декодирования секрета (ожидается base64): {e}"
         )
 
-    if len(secret_bytes) < 16 and len(secret_bytes) > 32:
-        raise ValueError("Длина секрета должна быть от 16 до 32 байт.")
+    if (
+        len(secret_bytes) < MIN_SECRET_LEN
+        and len(secret_bytes) > MAX_SECRET_LEN
+    ):
+        raise ValueError(
+            "Длина секрета должна быть "
+            f"от {MIN_SECRET_LEN} до {MAX_SECRET_LEN} байт."
+        )
 
     try:
         max_msg_size_bytes = int(data.get("max_msg_size_bytes", 1048576))

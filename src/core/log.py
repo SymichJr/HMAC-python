@@ -1,8 +1,8 @@
-import os
 import logging
+import os
 from typing import Optional
 
-from src.core.config import Config, _config_instance, BASE_DIR
+from src.core.config import BASE_DIR, Config, _config_instance
 
 logger = logging.getLogger("hmac-service")
 
@@ -25,9 +25,7 @@ def setup_logging(config: Config, logger: logging.Logger):
         "%(asctime)s - %(levelname)s - %(name)s - %(message)s"
     )
 
-    # Создаем директорию, если ее нет
-    if not os.path.exists(f"{BASE_DIR}/logs/"):
-        os.mkdir(f"{BASE_DIR}/logs/")
+    os.makedirs(f"{BASE_DIR}/logs/", exist_ok=True)
     fh = logging.FileHandler(f"{BASE_DIR}/logs/global.log", encoding="UTF-8")
     fh.setFormatter(formatter)
 

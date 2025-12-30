@@ -17,3 +17,9 @@ def sign_url(base_route_v1):
 def verify_url(base_route_v1):
     """Полный путь для проверки."""
     return f"{base_route_v1}/verify"
+
+
+@pytest.fixture(scope="session")
+def mock_configs_path():
+    """Путь до mock конфигов."""
+    return "tests/mock_configs"
